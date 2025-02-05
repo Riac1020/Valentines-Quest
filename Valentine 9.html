@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Valentine Quest for Shrikar! 🎮❤️</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            text-align: center;
+            background-color: #ffdde1;
+            padding: 50px;
+            position: relative;
+            color: #d63384;
+        }
+        h1 {
+            font-size: 40px;
+        }
+        .gif-container img {
+            width: 250px;
+            border-radius: 20px;
+        }
+        .story {
+            font-size: 22px;
+            margin: 20px auto;
+            max-width: 600px;
+            background: #fff3f3;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .button {
+            font-size: 24px;
+            padding: 15px 25px;
+            margin: 10px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        .yes {
+            background-color: #ff4081;
+            color: white;
+        }
+        .no {
+            background-color: #ff0000;
+            color: white;
+            position: absolute;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .button:hover {
+            transform: scale(1.1);
+        }
+        .message {
+            display: none;
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff1493;
+            margin-top: 30px;
+        }
+        .hidden {
+            display: none;
+        }
+        .final-message {
+            font-size: 26px;
+            font-weight: bold;
+            color: #ff00b3;
+            margin-top: 30px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>The Ultimate Valentine’s Quest! 🏹💖</h1>
+    <p>Hey Shrikar! You have been chosen for the most important mission of your life... 💌</p>
+    
+    <div class="gif-container">
+        <img src="https://media.tenor.com/1C1kKXx5TAsAAAAM/cute-love.gif" alt="Cute adventure gif">
+    </div>
+    
+    <div class="story" id="story-text">
+        <p>You are a brave knight 🏇 who has been on an epic journey for 2.5 years, protecting the kingdom of LoveLand! 💕</p>
+        <p>Your final quest: Complete the challenges to win the heart of Princess Ria! (Me! 😆)👑</p>
+    </div>
+    
+    <div class="buttons" id="level-buttons">
+        <button class="button" onclick="startQuest()">Start Quest! 🎮</button>
+    </div>
+    
+    <div id="message" class="message hidden">🎉 YOU DID IT! The kingdom celebrates your bravery! Love you forever, Sir Shrikar! 💖👑 From your Princess, Ria! 💕</div>
+    
+    <div id="final-message" class="final-message hidden">
+        💖 "Congrats, Sir Shrikar! You’ve won the ultimate treasure: My heart! 😘 You can now enjoy endless cuddles, pizza dates, and Netflix marathons forever!" 🍕📺💘
+    </div>
+    
+    <script>
+        let level = 0;
+        
+        function startQuest() {
+            const storyText = document.getElementById("story-text");
+            const levelButtons = document.getElementById("level-buttons");
+            
+            if (level === 0) {
+                storyText.innerHTML = "<p>Level 1: Solve the Riddle! 🤔</p><p>What’s something sweet, but not a dessert, and makes your heart skip a beat? 💓</p>";
+                levelButtons.innerHTML = '<button class="button" onclick="nextLevel(1)">Love? 💖</button>';
+            } else if (level === 1) {
+                storyText.innerHTML = "<p>Level 2: The Chase! 🏃‍♂️</p><p>Catch the escaping heart before it gets away! 💕</p>";
+                levelButtons.innerHTML = '<button class="button yes" onclick="nextLevel(2)">Catch it! 🏹</button>';
+            } else if (level === 2) {
+                storyText.innerHTML = "<p>Final Level: The Ultimate Decision! 🌟</p><p>Sir Shrikar, will you be my Valentine? 😘</p>";
+                levelButtons.innerHTML = '<button class="button yes" onclick="yesClick()">YES! ✅</button> <button class="button no" onmouseover="moveButton(this)">NO ❌</button>';
+            }
+            level++;
+        }
+
+        function nextLevel(next) {
+            level = next;
+            startQuest();
+        }
+        
+        function yesClick() {
+            document.getElementById("message").classList.remove("hidden");
+            document.getElementById("final-message").classList.remove("hidden");
+        }
+        
+        function moveButton(button) {
+            let x = Math.random() * window.innerWidth * 0.7;
+            let y = Math.random() * window.innerHeight * 0.7;
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        }
+    </script>
+</body>
+</html>
